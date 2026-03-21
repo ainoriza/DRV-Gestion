@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONASE — Sistema de Gestión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="screen-login" class="screen active">
+    <div class="login-bg">
+      <div class="login-card">
+        <div class="login-logo">
+          <div class="logo-mark">
+            <span class="logo-i">I</span><span class="logo-n">N</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">INASE</span>
+            <span class="logo-sub">Instituto Nacional de Semillas</span>
+          </div>
+        </div>
+
+        <div class="login-divider"></div>
+
+        <h1 class="login-heading">Sistema CONASE</h1>
+        <p class="login-desc">Gestión de expedientes RNC y RNPC.<br>Acceso restringido a cuentas <strong>@inase.gob.ar</strong></p>
+
+        <button class="btn-google" id="btn-login" onclick="handleLogin()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+            <path d="M3.964 10.707A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.96L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Ingresar con Google
+        </button>
+
+        <p class="login-error" id="login-error"></p>
+
+        <div class="login-footer">
+          <span>CONASE · INASE · Argentina</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP SCREEN -->
+  <div id="screen-app" class="screen">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark sm">
+            <span class="logo-i">I</span><span class="logo-n">N</span>
+          </div>
+          <span class="sidebar-title">CONASE</span>
+        </div>
+      </div>
+
+      <div class="sidebar-nav">
+        <a class="nav-item active" data-page="expedientes" onclick="navigate('expedientes')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="9" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 5h5M5 8h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M11 10l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Expedientes
+        </a>
+        <a class="nav-item" data-page="pagos" onclick="navigate('pagos')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="4" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 7h14" stroke="currentColor" stroke-width="1.3"/><circle cx="4.5" cy="10" r="1" fill="currentColor"/></svg>
+          Pagos
+          <span class="nav-badge coming">pronto</span>
+        </a>
+        <a class="nav-item" data-page="rnpc" onclick="navigate('rnpc')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4l2.5 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          CONASE RNPC
+          <span class="nav-badge coming">pronto</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <img id="user-avatar" src="" alt="" class="user-avatar" />
+          <div class="user-info">
+            <span id="user-name" class="user-name"></span>
+            <span id="user-email" class="user-email"></span>
+          </div>
+          <button class="btn-logout" onclick="handleLogout()" title="Cerrar sesión">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2H2.5A1.5 1.5 0 0 0 1 3.5v7A1.5 1.5 0 0 0 2.5 12H5M9 10l3-3-3-3M13 7H5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div id="page-expedientes" class="page active">
+        <!-- Injected by expedientes.js -->
+      </div>
+      <div id="page-zip" class="page">
+        <!-- Injected by zip.js -->
+      </div>
+      <div id="page-pagos" class="page">
+        <div class="coming-soon">
+          <span class="cs-icon">🗂</span>
+          <h2>Módulo de Pagos</h2>
+          <p>Próximamente disponible</p>
+        </div>
+      </div>
+      <div id="page-rnpc" class="page">
+        <div class="coming-soon">
+          <span class="cs-icon">📋</span>
+          <h2>CONASE RNPC</h2>
+          <p>Próximamente disponible</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/expedientes.js"></script>
+  <script src="js/zip.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
