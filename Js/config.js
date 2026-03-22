@@ -17,14 +17,14 @@ const CONFIG = {
   // ── Apps Script (backend principal) ──────────────────────────
   // Obtener en: script.google.com → Implementar → Administrar implementaciones
   // → copiar la URL "Aplicación web"
-  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/TU_DEPLOYMENT_ID/exec',
+  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxeTTfRDS8Lk9E828qqk5y1_yjMDciZyXBVqPdBhLniZ3iqj-VFmF4BuxQKrUaFR8o/exec',
 
   // ── Control de acceso ─────────────────────────────────────────
   ALLOWED_DOMAIN: 'inase.gob.ar',
 
   // URL de la app en producción (para OAuth redirect)
   // En desarrollo local usar: http://localhost:5500
-  APP_URL: 'https://TU_ORG.github.io/conase-app',
+  APP_URL: 'https://ainoriza.github.io/DRV-Gestion/',
 
   // ── Scopes OAuth ─────────────────────────────────────────────
   // Solo necesitamos el perfil — el acceso a Sheets lo maneja el Apps Script
